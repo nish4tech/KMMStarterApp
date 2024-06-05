@@ -53,21 +53,23 @@ dependencies {
     implementation(projects.shared)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
     implementation(libs.androidx.activity.compose)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material3)
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }
