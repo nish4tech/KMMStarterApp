@@ -21,9 +21,7 @@ class RocketLaunchViewModel() : ViewModel() {
         _launchState.value = RocketLaunchScreenState.Loading
         viewModelScope.launch {
             try {
-                SpaceXRepo().getAllLaunches().collect { launches ->
-                    _launchState.value = RocketLaunchScreenState.Success(launches)
-                }
+                _launchState.value = RocketLaunchScreenState.Success(SpaceXRepo().getAllLaunches())
             } catch (e: Exception) {
                 e.printStackTrace()
                 _launchState.value = RocketLaunchScreenState.Error(e.message.orEmpty())
