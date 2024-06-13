@@ -1,9 +1,11 @@
 package com.ip.mobile.home.data
 
 import com.ip.mobile.networking.SpaceXApi
+import com.ip.mobile.networking.SpaceXService
 
 class SpaceXRepo {
     suspend fun getAllLaunches(): List<RocketLaunch> {
-        return SpaceXApi().getAllLaunches()
+        val client = SpaceXApi.prepareClient()
+        return SpaceXService(client).getAllLaunches()
     }
 }
