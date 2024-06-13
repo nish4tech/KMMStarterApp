@@ -1,7 +1,5 @@
 package com.ip.mobile
 
-interface Platform {
-    val name: String
-}
+import io.ktor.client.engine.HttpClientEngine
 
-expect fun getPlatform(): Platform
+expect val httpEngine: HttpClientEngine

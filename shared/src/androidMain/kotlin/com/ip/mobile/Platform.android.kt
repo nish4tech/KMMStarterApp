@@ -1,7 +1,15 @@
 package com.ip.mobile
 
-class AndroidPlatform : Platform {
-    override val name: String = "Android ${android.os.Build.VERSION.SDK_INT}"
-}
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.okhttp.OkHttp
+import okhttp3.logging.HttpLoggingInterceptor
 
-actual fun getPlatform(): Platform = AndroidPlatform()
+actual val httpEngine: HttpClientEngine by lazy {
+    OkHttp.create {
+        val networkInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        addNetworkInterceptor(networkInterceptor)
+        //addInterceptor() todo we can add our Interceptor here
+    }
+}

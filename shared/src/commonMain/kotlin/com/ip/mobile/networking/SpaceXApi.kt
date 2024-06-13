@@ -1,5 +1,6 @@
 package com.ip.mobile.networking
 
+import com.ip.mobile.httpEngine
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.HttpTimeout
@@ -18,7 +19,7 @@ class SpaceXApi {
     companion object {
         const val BASE_URL = "api.spacexdata.com"
 
-        fun prepareClient(partnerId: String = "", authToken: String = ""): HttpClient = HttpClient {
+        fun prepareClient(partnerId: String = "", authToken: String = ""): HttpClient = HttpClient(engine = httpEngine) {
             expectSuccess = true
             install(HttpTimeout) {
                 requestTimeoutMillis = 5 * 60 * 1000

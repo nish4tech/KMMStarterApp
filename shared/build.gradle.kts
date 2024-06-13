@@ -36,6 +36,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.http)
+            implementation(libs.ktor.logging.android)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
